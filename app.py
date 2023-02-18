@@ -10,7 +10,7 @@ import pickle
 import streamlit as st
 
 #loading the saved model
-loaded_model = pickle.load(open('E:/BOOk/trained_model.sav' , 'rb'))
+loaded_model = pickle.load(open('https://drive.google.com/file/d/1pQesHyqFKNQgN3EdqN3G_ZVZMfpLg9lx/view?usp=share_link' , 'rb'))
 
 #creating a function for prediction
 def cancer_prediction(input_data):
