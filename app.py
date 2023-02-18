@@ -9,8 +9,19 @@ import numpy as np
 import pickle
 import streamlit as st
 
-#loading the saved model
-loaded_model = pickle.load(open('https://drive.google.com/file/d/1pQesHyqFKNQgN3EdqN3G_ZVZMfpLg9lx/view?usp=share_link' , 'rb'))
+from pydrive.auth import GoogleAuth
+from pydrive.drive import GoogleDrive
+import pickle
+
+gauth = GoogleAuth()
+gauth.LocalWebserverAuth()
+drive = GoogleDrive(gauth)
+
+file_id = '1pQesHyqFKNQgN3EdqN3G_ZVZMfpLg9lx'
+downloaded = drive.CreateFile({'id': file_id})
+downloaded.GetContentFile('trained_model.sav')
+
+loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
 #creating a function for prediction
 def cancer_prediction(input_data):
